@@ -17,7 +17,7 @@ Claude Code 창을 여러 개 띄워 놓고 일하다 보면 저녁에 이런 �
 ## 설치는 Claude 에게 한마디
 
 ```bash
-git clone <이 저장소>
+git clone https://github.com/yimhyobin/ai-report-lite.git
 cd ai-report-lite
 claude
 ```

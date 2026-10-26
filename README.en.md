@@ -17,7 +17,7 @@ The mascot is an otter heading home with a briefcase. It sits at a desk while wo
 ## Install by asking Claude
 
 ```bash
-git clone <this repo>
+git clone https://github.com/yimhyobin/ai-report-lite.git
 cd ai-report-lite
 claude
 ```
