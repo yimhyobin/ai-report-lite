@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>퇴근 보고</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="hd">
+    <div>
+      <p class="eyebrow">AI 직원 퇴근 보고 · 로컬 전용</p>
+      <h1 id="title">오늘 AI가 한 일</h1>
+      <p class="lede" id="lede">불러오는 중…</p>
+    </div>
+    <div class="meta">
+      <span id="stamp"></span>
+      <button id="copy" class="btn" type="button">보고서 복사 (마크다운)</button>
+      <a class="btn quiet" id="mdlink" href="/api/report?format=md" target="_blank" rel="noopener">보고서 열기</a>
+    </div>
+  </header>
+
+  <section class="panel" id="now-panel" aria-label="지금">
+    <h2>지금 <small>세션 하나가 직원 한 명 · 빨간 줄은 내 답을 기다리는 중</small></h2>
+    <div class="seats" id="seats"></div>
+  </section>
+
+  <div class="cols">
+    <section class="panel" id="work-panel" aria-label="오늘 한 일">
+      <h2>오늘 한 일 <small id="work-count"></small></h2>
+      <div id="work"></div>
+    </section>
+    <aside class="panel" id="decide-panel" aria-label="지금 결정할 것">
+      <h2>지금 결정할 것 <small id="decide-count"></small></h2>
+      <ul class="dec" id="decide"></ul>
+      <p class="hint">승인 요청과 답 없는 질문만 모읍니다. 여기서 답하지 않습니다 — 그 터미널로 가서 답하세요.</p>
+    </aside>
+  </div>
+
+  <footer class="foot">
+    <span>대화 기록(jsonl)을 내 컴퓨터에서만 읽습니다. 서버는 127.0.0.1 에만 열립니다. 모델을 부르지 않습니다.</span>
+    <span id="demo-badge" hidden>데모 데이터</span>
+  </footer>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

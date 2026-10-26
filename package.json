@@ -1,0 +1,19 @@
+{
+  "name": "ai-daily-report",
+  "version": "0.1.0",
+  "description": "Claude Code 세션의 '지금 하는 일·승인 대기·오늘 한 일 보고서·내일 결정할 것'을 한 화면에. 의존성 0, 로컬 전용.",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "start": "node scripts/start.mjs --open",
+    "stop": "node scripts/stop.mjs",
+    "status": "node scripts/status.mjs",
+    "report": "node scripts/report.mjs",
+    "demo": "node scripts/start.mjs --demo --open",
+    "uninstall": "node scripts/uninstall.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "license": "MIT"
+}
