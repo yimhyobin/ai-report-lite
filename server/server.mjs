@@ -30,6 +30,7 @@ const server = createServer((req, res) => {
   const url = new URL(req.url, "http://127.0.0.1");
   const send = (code, type, body) => { res.writeHead(code, { "content-type": type, "cache-control": "no-store", "x-content-type-options": "nosniff" }); res.end(body); };
   try {
+    if (url.pathname === "/favicon.ico") { res.writeHead(204); res.end(); return; }
     if (url.pathname === "/ping") return send(200, TYPES[".json"], JSON.stringify({ ok: true, pid: process.pid, demo: DEMO }));
     if (url.pathname === "/api/state") return send(200, TYPES[".json"], JSON.stringify(state()));
     if (url.pathname === "/api/report") {
