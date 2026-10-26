@@ -32,7 +32,7 @@ function project(p) {
 function render(st) {
   const r = st.report; const sessions = st.sessions ?? [];
   $("#demo-badge").hidden = !st.demo;
-  $("#title").textContent = `${r.date} 오늘 AI가 한 일`;
+  $("#title").textContent = `${r.date} ${r.carriedOver ? "어제 AI가 한 일 (새벽이라 어제 보고서)" : "오늘 AI가 한 일"}`;
   $("#lede").innerHTML = `프로젝트 <b>${r.totals.projects}개</b>에서 요청 <b>${r.totals.prompts}건</b>, 고친 파일 <b>${r.totals.edits}개</b>, 실행 <b>${r.totals.runs}건</b>.${r.totals.waiting ? ` 지금 <b style="color:var(--bad)">${r.totals.waiting}건</b>이 내 답을 기다립니다.` : " 기다리는 것은 없습니다."}`;
   $("#stamp").textContent = `갱신 ${hhmm(r.generatedAt)}`;
   const live = sessions.filter((s) => (s.live ?? s.state) !== "gone");

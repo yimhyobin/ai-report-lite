@@ -16,7 +16,13 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; ch
 function state() {
   if (DEMO) return demoState();
   const sessions = listSessions({ staleHours: cfg.staleHours, hide: cfg.hide });
-  const report = buildReport({ sessions, config: cfg });
+  let report = buildReport({ sessions, config: cfg });
+  // 자정~새벽 5시에 오늘 기록이 아직 없으면 어제 보고서를 보여 준다(퇴근 보고는 밤늦게 보는 일이 많다). 날짜는 그대로 표시된다.
+  if (report.totals.projects === 0 && new Date().getHours() < 5) {
+    const y = new Date(); y.setDate(y.getDate() - 1);
+    const yr = buildReport({ sessions, config: cfg, date: today(y) });
+    if (yr.totals.projects > 0) report = { ...yr, carriedOver: true };
+  }
   return { sessions, report, demo: false, config: { port: cfg.port, reportHour: cfg.reportHour } };
 }
 
