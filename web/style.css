@@ -16,11 +16,13 @@ h1,h2,h3,p{margin:0}
 .panel h2 small{font-size:12.5px;font-weight:500;color:var(--muted)}
 .cols{display:grid;gap:24px;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
 .seats{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
-.seat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 12px;align-items:center;min-width:0}
+.seat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 12px;align-items:center;min-width:0}
 .seat.waiting{border-left:3px solid var(--bad);background:var(--bad-soft)}
 .seat.working{border-left:3px solid var(--good)}
 .seat.resting{border-left:3px solid var(--line)}
-.seat .mark{width:40px;height:40px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:800;grid-row:1 / span 2}
+.seat .mark{width:56px;height:56px;object-fit:contain;grid-row:1 / span 2}
+.hd .otter{width:72px;height:72px;object-fit:contain;justify-self:end}
+.empty-otter{display:flex;gap:14px;align-items:center}.empty-otter img{width:64px;height:64px;object-fit:contain}
 .seat b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .seat .st{grid-column:2;font-size:13.5px;color:var(--muted);display:flex;gap:7px;align-items:center;min-width:0}
 .seat .st span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

@@ -9,7 +9,7 @@ function seat(s) {
   const st = s.live ?? s.state ?? "resting";
   const what = st === "waiting" ? (s.waitingWhat || "승인 또는 답이 필요합니다") : st === "working" ? (s.lastPrompt ? "요청 처리 중" : "일하는 중") : STATE_LABEL[st];
   return `<div class="seat ${esc(st)}" title="${esc(s.cwd ?? "")}">
-    <span class="mark" aria-hidden="true">${esc(String(s.project ?? "?").slice(0, 1).toUpperCase())}</span>
+    <img class="mark" alt="" src="/img/otter-${st === "waiting" ? "waiting" : st === "working" ? "working" : "hero"}.png" width="56" height="56">
     <b>${esc(s.project)}</b>
     <span class="st"><i></i><span>${esc(what)}${st === "waiting" && s.waitingSince ? ` · ${hhmm(s.waitingSince)}부터` : ""}</span></span>
     ${s.lastPrompt ? `<span class="prompt">마지막 요청: ${esc(s.lastPrompt)}</span>` : ""}
@@ -36,7 +36,7 @@ function render(st) {
   $("#lede").innerHTML = `프로젝트 <b>${r.totals.projects}개</b>에서 요청 <b>${r.totals.prompts}건</b>, 고친 파일 <b>${r.totals.edits}개</b>, 실행 <b>${r.totals.runs}건</b>.${r.totals.waiting ? ` 지금 <b style="color:var(--bad)">${r.totals.waiting}건</b>이 내 답을 기다립니다.` : " 기다리는 것은 없습니다."}`;
   $("#stamp").textContent = `갱신 ${hhmm(r.generatedAt)}`;
   const live = sessions.filter((s) => (s.live ?? s.state) !== "gone");
-  $("#seats").innerHTML = live.length ? live.map(seat).join("") : '<p class="empty">열려 있는 Claude 세션이 없습니다. 일을 시키면 여기 앉습니다.</p>';
+  $("#seats").innerHTML = live.length ? live.map(seat).join("") : '<p class="empty empty-otter"><img src="/img/otter-hero.png" alt=""><span>열려 있는 Claude 세션이 없습니다. 일을 시키면 여기 앉습니다.</span></p>';
   $("#work-count").textContent = `${r.projects.length}개 프로젝트`;
   $("#work").innerHTML = r.projects.length ? r.projects.map(project).join("") : '<p class="empty">오늘 기록된 작업이 없습니다.</p>';
   $("#decide-count").textContent = `${r.decisions.length}건`;
